@@ -1,3 +1,6 @@
+from ast import Str
+from asyncio.windows_events import NULL
+from typing import Dict
 import pandas as pd
 
 ### データフレームに関する関数 ###
@@ -38,6 +41,13 @@ def convertDFToDict(df:pd.DataFrame, additional_key_list:list, combine_char=">")
         df_dict[key] = xy_df
     
     return df_dict
+
+# 辞書からkeyが部分一致しているvalueを検索する
+def searchValueInDictByKeyPartialMatch(dict:dict, key_str:str):
+    for key, value in dict.items():
+        if key_str in key:
+            return value
+    return NULL
 
 
 ### 一般的な関数 ###
